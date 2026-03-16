@@ -3,7 +3,7 @@
 /* https://forum.seeedstudio.com/t/xiao-nrf52840-plus/294262/7
 */
 
-&nice_view_spi: &spi0 { };
+nice_view_spi: &spi0 { };
 
 &pinctrl {
     spi0_default: spi0_default {
