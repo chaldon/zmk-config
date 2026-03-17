@@ -5,6 +5,13 @@
 
 nice_view_spi: &spi0 { };
 
+/ {
+    mouse_listener {
+        compatible = "zmk,input-listener";
+        device = <&mouse>;
+    };
+};
+
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -30,8 +37,20 @@ nice_view_spi: &spi0 { };
     pinctrl-1 = <&spi0_sleep>;
     pinctrl-names = "default", "sleep";
     
-    /* Chip Select on P0.24 */
-    cs-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
+    /* Chip Select on P0.24 - display, P0.00 - PMW3389 */
+    cs-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>, <&gpio1 00 GPIO_ACTIVE_HIGH>;
+
+    mouse: mouse@0 {
+		compatible = "pixart,pmw3360";
+		status = "okay";
+		reg = <0>;
+		spi-max-frequency = <2000000>;
+
+		// pmw3360 driver parameters
+		irq-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+		cpi = <600>;
+		rotate-90;
+	};
 };
 
 / {
