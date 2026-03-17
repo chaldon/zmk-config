@@ -1,7 +1,11 @@
 **Resources**
-[Awesome ZMK](https://github.com/mctechnology17/awesome-zmk)
+
+- [Awesome ZMK](https://github.com/mctechnology17/awesome-zmk)
+- [Keymap Editor](https://nickcoutsos.github.io/keymap-editor/)
+
 
 **Original note**
+
 ****Dactyl Manuform Keyboard. Here is what you need to KNOW****
 
 **Dactyl Manuform keyboards** with **ZMK** (Zephyr-based Microcontroller Keyboard) firmware work by utilizing ZMK to manage keyboard functionality.
