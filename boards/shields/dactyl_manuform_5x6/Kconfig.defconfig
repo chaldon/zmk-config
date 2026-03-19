@@ -15,12 +15,21 @@ if SHIELD_DACTYL_MANUFORM_5x6_LEFT || SHIELD_DACTYL_MANUFORM_5x6_RIGHT
 
 endif
 
-#if ZMK_DISPLAY
+if ZMK_DISPLAY
 
-#config SPI
-#    default y
+    config SPI
+        default y
 
-#config NICE_VIEW
-#    default y
+    config NICE_VIEW
+        default n
 
-#endif
+    config SHARP_MEMORY
+        default y
+
+    config SHARP_MEMORY_CMD_WRITE_LINE
+        defauly y
+
+    config ZMK_DISPLAY_STATUS_SCREEN_BUILTIN
+        default y
+        
+endif
