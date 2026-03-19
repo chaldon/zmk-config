@@ -21,6 +21,9 @@ if ZMK_DISPLAY
         default y
 
     config NICE_VIEW
-        default ny
+        default y
 
+    config NICE_VIEW_WIDGET_STATUS
+        default y
+        
 endif
