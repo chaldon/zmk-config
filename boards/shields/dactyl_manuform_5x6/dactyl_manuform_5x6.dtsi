@@ -5,12 +5,12 @@
 */
 // nice_view_spi: &spi0 { };
 
-/ {
+/*/ {
     mouse_listener {
         compatible = "zmk,input-listener";
         device = <&mouse>;
     };
-};
+};*/
 
 &pinctrl {
     spi0_default: spi0_default {
