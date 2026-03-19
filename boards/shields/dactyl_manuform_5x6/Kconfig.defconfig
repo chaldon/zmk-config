@@ -20,10 +20,11 @@ if ZMK_DISPLAY
     config SPI
         default y
 
-    config NICE_VIEW
-        default y
+    # warning: NICE_VIEW  defined without a type
+    #config NICE_VIEW
+    #    default y
 
     config NICE_VIEW_WIDGET_STATUS
         default y
-        
+
 endif
