@@ -55,15 +55,10 @@ nice_view_spi: &spi0 { };
 		compatible = "pixart,pmw3360";
 		reg = <1>;
 		spi-max-frequency = <2000000>; // | SPI_CPOL | SPI_CPHA
-        spi-cpol;
-        spi-cpha;
 		// pmw3360 driver parameters
 		irq-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         //reset-gpios = <&gpio0 24 GPIO_ACTIVE_LOW| GPIO_PULL_UP>; // SPI Mode 3, specific for pmw3360
 		cpi = <600>;
-        evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_X>;
-        y-input-code = <INPUT_REL_Y>;
 	};
 };
 
