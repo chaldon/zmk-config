@@ -58,7 +58,7 @@ nice_view_spi: &spi0 { };
 		// pmw3360 driver parameters
 		irq-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         //reset-gpios = <&gpio0 24 GPIO_ACTIVE_LOW| GPIO_PULL_UP>; // SPI Mode 3, specific for pmw3360
-		cpi = <600>;ff ZMK Studio
+		cpi = <600>;
 	};
 };
 
