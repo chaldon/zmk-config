@@ -17,6 +17,7 @@ manifest:
 
     - name: zmk-driver-pmw3389
       remote: chaldon
+      revision: main
       path: zmk-driver-pmw3389
 
   self:
