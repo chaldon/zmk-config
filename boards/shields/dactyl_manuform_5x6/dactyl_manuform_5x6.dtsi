@@ -45,6 +45,7 @@ nice_view_spi: &spi0 { };
     pinctrl-0 = <&spi0_default>;
     pinctrl-1 = <&spi0_sleep>;
     pinctrl-names = "default", "sleep";
+    label = "spi0";
     
     /* Chip Select on P0.24 - display, P1.00 - PMW3389 */
     cs-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>   /* Index 0: Display */
