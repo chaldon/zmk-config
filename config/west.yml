@@ -15,10 +15,10 @@ manifest:
       revision: v0.3.0
       import: app/west.yml
 
-    - name: zmk-driver-pmw3389
+    - name: zmk-driver-pmw33xx
       remote: chaldon
       revision: main
-      path: zmk-driver-pmw3389
+      path: zmk-driver-pmw33xx
 
   self:
     path: config
