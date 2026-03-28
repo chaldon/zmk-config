@@ -10,7 +10,9 @@
 - [zmk-config-kai-cosmos](https://github.com/kaihchang/zmk-config-kai-cosmos/blob/main/config/west.yml)
 
 **Misc notes**
+
 sudo dmesg -w
+
 while true; do cat /dev/ttyACM1  && break; done
 
 **Original note**
