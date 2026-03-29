@@ -15,6 +15,45 @@ sudo dmesg -w
 
 while true; do cat /dev/ttyACM1  && break; done
 
+**Local build using docker (chatgpt version)**
+
+
+
+**Local build using docker (chatgpt version)**
+
+```
+git clone https://github.com
+cd your-zmk-config
+
+docker run -it --rm \
+  --security-opt label=disable \
+  --workdir /workspace \
+  -v "$PWD":/workspace \
+  zmkfirmware/zmk-build-arm:4.1-branch /bin/bash
+```
+
+```
+# Inside the container:
+west init -l config/
+west update
+west zephyr-export
+
+
+# Inside the container (example for a nice!nano v2 with a Dactyl Manuform shield):
+export BOARD="nice_nano_v2"
+export SHIELD="dactyl_manuform_5x6_left nice_view"
+export BUILD_DIR="build/left"
+export ZMK_CONFIG_PATH="/workspace/config" # Path to your config folder inside the container
+
+west build -d "$BUILD_DIR" -p \
+  -b "$BOARD" \
+  -S "zmk-usb-logging" \
+  -s /workspace/zmk/app \
+  -- \
+  -DSHIELD="$SHIELD" \
+  -DZMK_CONFIG="$ZMK_CONFIG_PATH"
+```
+
 **Original note**
 
 ****Dactyl Manuform Keyboard. Here is what you need to KNOW****
