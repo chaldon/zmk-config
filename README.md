@@ -15,9 +15,6 @@ sudo dmesg -w
 
 while true; do cat /dev/ttyACM1  && break; done
 
-**Local build using docker (chatgpt version)**
-
-
 
 **Local build using docker (chatgpt version)**
 
@@ -32,9 +29,28 @@ docker run -it --rm \
   zmkfirmware/zmk-build-arm:4.1-branch /bin/bash
 ```
 
+
+```
+git clone https://github.com
+cd your-zmk-config
+
+docker run -it --rm \
+  --security-opt label=disable \
+  --workdir /workspace \
+  -v "$PWD":/workspace \
+  zmkfirmware/zmk-dev-generic:3.5-branch /bin/bash
+```
+
+
+
 ```
 # Inside the container:
-west init -l config/
+mkdir -p /workspace/__w/zmk-config
+cd /workspace/__w/zmk-config
+git clone https://github.com/chaldon/zmk-config.git
+mkdir -p /workspace/zmk-config/config
+cd /workspace/zmk-config
+west init -l /workspace/zmk-config/config/
 west update
 west zephyr-export
 
@@ -43,15 +59,18 @@ west zephyr-export
 export BOARD="nice_nano_v2"
 export SHIELD="dactyl_manuform_5x6_left nice_view"
 export BUILD_DIR="build/left"
-export ZMK_CONFIG_PATH="/workspace/config" # Path to your config folder inside the container
+export ZMK_CONFIG_PATH="/workspace/zmk-config/config" # Path to your config folder inside the container
+export ZMK_EXTRA_MODULES="/workspace/__w/zmk-config/zmk-config"
+export CMAKE_BUILD_PARALLEL_LEVEL=4
 
 west build -d "$BUILD_DIR" -p \
   -b "$BOARD" \
   -S "zmk-usb-logging" \
-  -s /workspace/zmk/app \
+  -s /workspace/zmk-config/zmk/app \
   -- \
   -DSHIELD="$SHIELD" \
-  -DZMK_CONFIG="$ZMK_CONFIG_PATH"
+  -DZMK_CONFIG="$ZMK_CONFIG_PATH" \
+  -DZMK_EXTRA_MODULES="$ZMK_EXTRA_MODULES"
 ```
 
 **Original note**

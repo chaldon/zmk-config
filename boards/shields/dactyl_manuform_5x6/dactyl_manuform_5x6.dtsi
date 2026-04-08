@@ -40,6 +40,10 @@ nice_view_spi: &spi0 { };
     };
 };
 
+&gpio1 {
+    status = "okay";
+};
+
 &spi0 {
     status = "okay";
     pinctrl-0 = <&spi0_default>;
@@ -48,16 +52,19 @@ nice_view_spi: &spi0 { };
     label = "spi0";
     
     /* Chip Select on P0.24 - display, P1.00 - PMW3389 */
-    cs-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>   /* Index 0: Display */
-            , <&gpio1 0 GPIO_ACTIVE_LOW>;    /* Index 1: Trackball, ative_low is typical for pixart */
+    cs-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;   /* Index 0: Display */
+    //       , <&gpio1 0 GPIO_ACTIVE_LOW>;    /* Index 1: Trackball, ative_low is typical for pixart */
 
     trackball: trackball@1 {
 		status = "okay";
 		compatible = "pixart,pmw33xx";
  		reg = <1>;
+        //label = "PMW3389 Trackball";
+        //cs-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
 		spi-max-frequency = <1000000>; // | SPI_CPOL | SPI_CPHA
 		// pmw33xx driver parameters
 		motswk-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        cs-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
         //reset-gpios = <&gpio0 24 GPIO_ACTIVE_LOW| GPIO_PULL_UP>; // SPI Mode 3, specific for pmw3360
         //spi-cpol;
         //spi-cpha;
