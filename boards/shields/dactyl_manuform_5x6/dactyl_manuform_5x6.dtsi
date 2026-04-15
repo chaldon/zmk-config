@@ -64,7 +64,7 @@ nice_view_spi: &spi0 { };
 		spi-max-frequency = <1000000>; // | SPI_CPOL | SPI_CPHA
 		// pmw33xx driver parameters
 		motswk-gpios = <&gpio0 11>;
-        cs-gpios = <&gpio1 0>;
+        cs-gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
         //reset-gpios = <&gpio0 24 GPIO_ACTIVE_LOW| GPIO_PULL_UP>; // SPI Mode 3, specific for pmw3360
         //spi-cpol;
         //spi-cpha;
